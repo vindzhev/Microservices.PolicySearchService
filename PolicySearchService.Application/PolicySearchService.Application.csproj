@@ -9,10 +9,10 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="MediatR" Version="8.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="MicroservicesPOC.Shared" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicroservicesPOC.Shared\MicroservicesPOC.Shared.csproj" />
     <ProjectReference Include="..\PolicySearchService.Domain\PolicySearchService.Domain.csproj" />
   </ItemGroup>
 
