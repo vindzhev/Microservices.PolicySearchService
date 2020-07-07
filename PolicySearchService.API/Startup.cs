@@ -6,12 +6,12 @@ namespace PolicySearchService.API
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
-    using Steeltoe.Discovery.Client;
     using Newtonsoft.Json.Serialization;
 
     using PolicySearchService.Application;
     using PolicySearchService.Infrastructure;
     using PolicySearchService.API.Extensions;
+    using MicroservicesPOC.Shared.API.Extensions;
 
     public class Startup
     {
@@ -22,7 +22,7 @@ namespace PolicySearchService.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDiscoveryClient(Configuration);
+            services.AddConsulConfig(Configuration);
 
             services
                 .AddApplication()
@@ -54,7 +54,7 @@ namespace PolicySearchService.API
 
             app.UseAuthorization();
 
-            app.UseDiscoveryClient();
+            app.UseConsul(Configuration);
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
