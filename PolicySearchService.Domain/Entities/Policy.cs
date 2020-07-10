@@ -4,8 +4,6 @@
 
     public class Policy
     {
-        public Guid Id { get; set; }
-
         public Guid PolicyNumber { get; set; }
 
         public DateTimeOffset PolicyStartDate { get; set; }
