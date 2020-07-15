@@ -8,7 +8,7 @@
     using Nest;
     using MediatR;
     
-    using MicroservicesPOC.Shared;
+    using MicroservicesPOC.Shared.Common;
     using MicroservicesPOC.Shared.Messaging;
     using MicroservicesPOC.Shared.Messaging.Events;
     
@@ -28,7 +28,7 @@
 
             services
                 .AddScoped<IPolicyRepository, PolicyRepository>()
-                .AddSingleton(typeof(IElasticClient), x => CreateElasticClient(configuration.GetConnectionString("ElasticSearchConnectionString")))
+                .AddSingleton(typeof(IElasticClient), x => CreateElasticClient(configuration.GetConnectionString("ElasticSearchConnection")))
                 .AddTransient<INotificationHandler<PolicyCreatedEvent>, PolicyCreatedHandler>();
 
             services.AddHostedService<RabbitMqListenerWorker<PolicyCreatedEvent>>();

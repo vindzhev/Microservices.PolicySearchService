@@ -11,7 +11,8 @@ namespace PolicySearchService.API
     using PolicySearchService.Application;
     using PolicySearchService.Infrastructure;
     using PolicySearchService.API.Extensions;
-    using MicroservicesPOC.Shared.API.Extensions;
+
+    using MicroservicesPOC.Shared.API.ServiceDiscovery;
 
     public class Startup
     {
@@ -22,7 +23,7 @@ namespace PolicySearchService.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddConsulConfig(Configuration);
+            services.RegisterConsulServices(this.Configuration.GetServiceConfig());
 
             services
                 .AddApplication()
@@ -53,8 +54,6 @@ namespace PolicySearchService.API
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseConsul(Configuration);
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
